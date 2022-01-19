@@ -1,0 +1,53 @@
+/* Query 1 */ 
+Top 5 Sales By Artist
+
+SELECT a.Name, SUM(il.Quantity) sales
+FROM Artist a
+JOIN Album al
+ON a.ArtistId = al.ArtistId
+JOIN Track t
+On t.AlbumId = al.AlbumId 
+JOIN InvoiceLine il
+ON il.TrackId = t.TrackId
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5;
+
+/* Query 2 */
+Number of Sales By Genre
+ 
+SELECT g.Name, SUM(il.Quantity) sales
+FROM Genre g
+JOIN Track t
+ON g.GenreId = t.GenreId
+JOIN InvoiceLine il
+ON il.TrackId = t.TrackId
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/* Query 3 */
+Top 10 Longest Rock Album By Artist
+
+SELECT r.Name Artist_Name, a.Title Album_Title, SUM(t.Milliseconds) Milliseconds , g.Name Genre_Name
+FROM Artist r
+JOIN Album a
+ON r.ArtistId = a.ArtistId
+JOIN Track t
+ON a.AlbumId = t.AlbumId
+JOIN Genre g
+ON g.GenreId = t.GenreId
+WHERE g.Name = 'Rock'
+GROUP BY 2
+ORDER BY 3 DESC
+LIMIT 10;
+
+/* Query 4 */
+Top Spenders By Customer
+
+SELECT c.CustomerId Customer, SUM(i.total) Total_spent,
+FROM Customer c
+JOIN Invoice i
+ON c.CustomerId = i.CustomerId
+GROUP BY 1
+ORDER By 2 DESC
+LIMIT 10;
