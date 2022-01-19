@@ -1,4 +1,6 @@
-# Udacity-Business_Analytics-Nanodegree
+# Udacity-Business-Analytics-Nanodegree
+
+Learn foundational data skills that apply across functions and industries. Learn to analyze data and build models with Excel, query databases using SQL, and create informative data visualizations with Tableau.
 
 Introduction to Data
 
